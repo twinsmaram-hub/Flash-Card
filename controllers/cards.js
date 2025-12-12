@@ -29,10 +29,10 @@ router.post('/', async (req, res) => {
   try {
     req.body.owner = req.session.user._id;
     await Listing.create(req.body);
-    res.redirect('/listings');
+    res.redirect('/cards');
   } catch (error) {
     console.error(error);
-    res.redirect('/listings/new');
+    res.redirect('/cards/new');
   }
 });
 
