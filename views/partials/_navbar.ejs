@@ -1,10 +1,28 @@
 
-<nav>
-  <% if (user) { %>
-  <a href="/">Home</a>
-  <a href="/auth/sign-out">Sign Out</a>
-  <% } else { %>
-  <a href="/auth/sign-up">Sign Up</a>
-  <a href="/auth/sign-in">Sign In</a>
-  <% } %>
+<nav class="navbar">
+    
+    <div class="navbar-logo">
+            <img src="/images/logo.png" alt="logo" class="logo-image">
+    </div>
+<% if (user) { %>
+        <div class="navbar-user">
+            <a href="/">Home</a>
+
+            <% if (user.pictureprof) { %>
+               <img src="<%= user.pictureprof %>" alt=" profile picture" class="profile-pic">
+               <% } else { %>
+                <img src="/images/af.png" alt="default-avatar" class="profile-pic">
+            <% } %>
+            
+            <% if (user.username) { %>
+                <span>Welcom  <%= user.username %></span>
+            <% } %>
+
+            <a href="/auth/sign-out">Sign Out</a>
+        </div>
+        
+    <% } else { %>
+      <a href="/auth/sign-up">Sign Up</a>
+      <a href="/auth/sign-in">Sign In</a>
+        <% } %>
 </nav>

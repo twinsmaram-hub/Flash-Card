@@ -11,6 +11,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  pictureprof:{
+    type: String,
+  }
 });
 // then we register the model with mongoose
 const User = mongoose.model('User', userSchema);
