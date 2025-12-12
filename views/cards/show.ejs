@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard: <%= card.question %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    
+    <h1>
+        <% if (card.owner.pictureprof) { %>
+            <img src="<%= card.owner.pictureprof %>" alt="Profile Picture" style="width: 30px;">
+        <% } %>
+        Card created by <%= card.owner.username %> 
+    </h1>
+    
+    <h2>Details</h2>
+
+     <p>Question: <%= card.question %></p>
+    
+    <% if (card.picture) { %>
+        <img src="<%= card.picture %>" alt="Card Image" style="max-width: 400px;">
+    <% } %>
+    
+     <p>Answer: <%= card.answer %></p>
+
+   <h2>Owner Options</h2>
+     <% if (user && card.owner._id.equals(user._id)) { %>
+    <p>You own this!</p>
+    <a href="/cards/<%= card._id %>/edit">Edit Flashcard</a>
+    <form action="/cards/<%= card._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Flashcard</button>
+     </form>
+        <% } %>
+
+
+</body>
+</html>
+</body>
+</html>

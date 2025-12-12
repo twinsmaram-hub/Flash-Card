@@ -6,16 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-      <%- include('./partials/_navbar.ejs') %>
+      <%- include('../partials/_navbar.ejs') %>
 
         <h1>Here's all the Cards</h1>
     <a href="/cards/new">Add New Cards</a>
 
     <ul>
-      <% cards.forEach((card) => { %>
+      <% card.forEach((oneCard) => { %>
       
-        A card in <%= cards.question  %> owned by <%= cards.owner.username %>.
-        <a href="/listings/<%= cards._id %>">See Details</a>
+        A card in <%= oneCard.question  %> owned by <%= oneCard.owner.username %>.
+        <a href="/cards/<%= oneCard._id %>">See Details</a>
       
       <% }) %>
     </ul>
