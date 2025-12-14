@@ -1,8 +1,6 @@
 const express = require('express');
-
 const router = express.Router();
 const Cards = require('../models/cards');
-
 
 router.get('/', async (req, res) => {
   try {
@@ -24,6 +22,10 @@ router.get('/new', async (req, res) => {
     res.redirect('/');
   }
 });
+
+
+//update
+
 router.post('/', async (req, res) => {
   try {
     req.body.owner = req.session.user._id;
@@ -36,16 +38,31 @@ router.post('/', async (req, res) => {
 });
 
 
-// Show
-router.get('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const card = await Cards.findById(req.params.id).populate('owner');
-    res.render('cards/show.ejs', { card });
+    const card = await Cards.findById(req.params.id);
+    const isOwner = card.owner.equals(req.session.user._id);
+    if (isOwner) {
+      await card.updateOne(req.body);
+      res.redirect(`/cards/${req.params.id}`);
+    } else {
+      res.redirect(`/cards/${req.params.id}`);
+    }
   } catch (error) {
     console.error(error);
     res.redirect('/cards');
   }
+  
 });
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const card = await Cards.findById(req.params.id)
+    res.render('cards/edit.ejs', { card })
+  } catch (error) {
+    console.error(error)
+    res.redirect('/cards')
+  }
+})
 // Delete
 router.delete('/:id', async (req, res) => {
   try {
@@ -63,7 +80,22 @@ router.delete('/:id', async (req, res) => {
     res.redirect('/cards');
   }
 });
+// Show
+router.get('/:id', async (req, res) => {
+  console.log('Show Route')
+  try {
+    const card = await Cards.findById(req.params.id).populate('owner');
 
+    res.render('cards/show.ejs', {
+      card,
+      user: req.session.user ,
+      isOwner: card.owner._id.equals(req.session.user._id)
+});
+  } catch (error) {
+    console.error(error);
+    res.redirect('/cards');
+  }
+});
 
 
 

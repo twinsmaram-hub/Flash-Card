@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+ <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>All Flashcards</title>
+   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-      <%- include('../partials/_navbar.ejs') %>
+ <%- include('../partials/_navbar.ejs') %>
 
-        <h1>Here's all the Cards</h1>
-    <a href="/cards/new">Add New Cards</a>
+ <div class="container"> 
+  <h1>Here's all the Cards</h1>
+<a href="/cards/new" class="btn-primary add-new-card-link">Add a New Card</a>
+ <div class="cards-grid"> 
+ <% card.forEach((oneCard) => { %>
+ <div class="card-item">
 
-    <ul>
-      <% card.forEach((oneCard) => { %>
-      
-        A card in <%= oneCard.question  %> owned by <%= oneCard.owner.username %>.
-        <a href="/cards/<%= oneCard._id %>">See Details</a>
-      
-      <% }) %>
-    </ul>
+ <div class="card-header">
+ <h3> <%= oneCard.question %></h3>
+</div>
+
+ <div class="card-footer">
+                       <p>Owner: <strong><%= oneCard.owner.username %></strong></p>
+                       <a href="/cards/<%= oneCard._id %>" class="btn-card-details">See Details</a>
+                     </div>
+                     </div>
+                 <% }) %>
+           </div>
+     </div>
+
 </body>
 </html>

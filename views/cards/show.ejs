@@ -3,47 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcard: <%= card.question %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"> 
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    <div class="card__scale-1"></div>
+    <div class="card__scale-2"></div>
     
-    <h1>
-        <% if (card.owner.pictureprof) { %>
-            <img src="<%= card.owner.pictureprof %>" alt="Profile Picture" style="width: 30px;">
-        <% } %>
-        Card created by <%= card.owner.username %> 
-    </h1>
+    <div class="modal-overlay" id="flashcardModal">
+        <div class="modal-content">
+            
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    
+                    <div class="card-face card-front">
+                        
+                        <div class="card-info">
+                             <% if (card.owner.pictureprof) { %>
+                                <img src="<%= card.owner.pictureprof %>" alt="profile">                
+                            <% } else { %>
+                               <img src="/images/af.png" alt="default-avatar" class="profile-pic">
+                            <% } %>
+                             Created by <strong><%= card.owner.username %></strong>
+                        </div>
+                        
+                        <div class="content-group"> 
+                            <h3>Question:</h3>
+                            <p><%= card.question %></p>
+                            <% if (card.picture) { %>
+                                <img src="<%= card.picture %>" alt="Card Image">
+                            <% } %>
+                        </div>
+                        
+                        <% if (card.owner._id.equals(user._id)) { %>
+                            <div class="card-actions"> 
+                                <a href="/cards/<%= card._id %>/edit" class="btn-card-edit">Edit</a>
+                                <form action="/cards/<%= card._id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn-card-delete">Delete</button>
+                                </form>
+                            </div>
+                        <% } %>
+                        
+                        <div class="flip-hint">Click to Reveal Answer</div>
+                        
+                    </div>
+                    
+                    <div class="card-face card-back">
+                        <h3>Answer:</h3>
+                        <p><%= card.answer %></p> <div class="flip-hint">Click to Return to Question</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
     
-    <h2>Details</h2>
-
-     <p>Question: <%= card.question %></p>
-    
-    <% if (card.picture) { %>
-        <img src="<%= card.picture %>" alt="Card Image" style="max-width: 400px;">
-    <% } %>
-    
-     <p>Answer: <%= card.answer %></p>
-
-   <h2>Owner Options</h2>
-     <% if (user && card.owner._id.equals(user._id)) { %>
-    <p>You own this!</p>
-    <a href="/cards/<%= card._id %>/edit">Edit Flashcard</a>
-    <form action="/cards/<%= card._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Flashcard</button>
-     </form>
-        <% } %>
-
-
-</body>
-</html>
+   <script src="/js/flashcard.js"></script>
 </body>
 </html>
