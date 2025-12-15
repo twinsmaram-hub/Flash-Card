@@ -10,24 +10,24 @@
  <%- include('../partials/_navbar.ejs') %>
 
  <div class="container"> 
-  <h1>Here's all the Cards</h1>
-<a href="/cards/new" class="btn-primary add-new-card-link">Add a New Card</a>
- <div class="cards-grid"> 
- <% card.forEach((oneCard) => { %>
- <div class="card-item">
+  <h1 id="H1">Here's all the Cards</h1>
+  <a href="/cards/new" class="btn-primary add-new-card-link">Add a New Card</a>
+  <div class="cards-grid"> 
+      <% card.forEach((oneCard) => { %>
+       <div class="card-item">
 
- <div class="card-header">
- <h3> <%= oneCard.question %></h3>
-</div>
+      <div class="card-header">
+          <h3> <%= oneCard.title %></h3>
+      </div>
 
  <div class="card-footer">
-                       <p>Owner: <strong><%= oneCard.owner.username %></strong></p>
-                       <a href="/cards/<%= oneCard._id %>" class="btn-card-details">See Details</a>
-                     </div>
-                     </div>
-                 <% }) %>
+           <p>Owner: <strong><%= oneCard.owner.username %></strong></p>
+           <a href="/cards/<%= oneCard._id %>" class="btn-card-details">See Details</a>
            </div>
-     </div>
+       </div>
+   <% }) %>
+  </div>
+ </div>
 
 </body>
 </html>

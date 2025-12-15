@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"> 
   </head>
-  <body>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
+      <%- include('../partials/_navbar singup.ejs') %>
 
+  <body class="sign-page">
+    
+    <form action="/auth/sign-up" method="POST" class="sign">
+      <h1>Create a new account!</h1>
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" />
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <h1>Create a new account!</h1>
+    <form action="/auth/<%= user._id %>?_method=PUT" method="POST"></form>
+
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" value="<%= user.username  %>"/>
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" value="<%= user.password  %>"/>
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" value="<%= user.confirmPassword  %>"/>
+      
+      <label for="pictureprof">picture  profile:</label>
+      <input type="text" name="pictureprof" id="pictureprof" value="<%= user.pictureprof  %>" />
+    
+      <button type="submit">Save Change</button>
+    </form>
+  </body>
+</html>

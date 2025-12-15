@@ -10,15 +10,31 @@ body {
     background-color: #f4f7f6;
     color: #333;
     line-height: 1.6;
-    padding-top: 100px; 
+    padding-top: 100px;
+    overflow: hidden;
+
+}
+.sign-page{
+    background-image:url(/images/back.png) ;
+    background-size: cover ;
+    background-repeat: no-repeat ;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+#in{
+    padding-top: 12%;
+
 }
 
 
 h1, h2, h3 {
-    color: #2c3e50;
+    color: #3D0923;
     margin-bottom: 15px;
     padding-bottom: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;               
 }
+
 
 .container {
     width: 90%;
@@ -38,11 +54,44 @@ form {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fafafa;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: center;
 }
+
+.sign {
+    background-color: #bf7a7aa0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: (0 10px 30px rgba(0, 0, 0, 0.75));
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    width: 515px;
+    margin: auto;
+    backdrop-filter: blur(10px);
+}
+.sign label{
+ font-weight: bold;
+    color:#933664;
+    margin-top: 5px;
+}
+
+.sign input:hover {
+    border-color: #750D37;
+    transform: translateX(-2px);
+}
+
+
+
+
 
 label {
     font-weight: bold;
-    color: #555;
+    color: #390040;
+    align-self: self-start;
 }
 
 input[type="text"],
@@ -133,15 +182,14 @@ button[type="submit"]:hover,
     padding: 15px 20px;
     flex-grow: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+
     min-height: 80px; 
     text-align: center;
 }
 
 .card-header h3 {
     margin: 0;
-    color: #3b2d45; 
+    color: #56153D; 
     font-size: 1.2em;
     font-weight: 600;
     line-height: 1.4;
@@ -184,7 +232,7 @@ button[type="submit"]:hover,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3b2d45; 
+    background-color: #30013B; 
     color: white;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -465,4 +513,104 @@ button[type="submit"]:hover,
     opacity: 0.9;
     font-style: italic;
     font-weight: 300;
+}
+#index{
+    justify-content: center;
+    align-items: center;
+}
+#indexh{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.but{
+    margin-left: auto;
+    margin-right: auto; 
+    width: 50%;
+    padding-bottom: 100%;
+    padding:80px 10px 80px 10px;
+    margin-top: 80px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+     backdrop-filter: blur(10px);
+     color: white;
+    background: radial-gradient(circle, #e376a5be, #a75277c2, #8f3e61bb);
+
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 25px rgba(255, 255, 255, 0.15); 
+    
+    text-align: center;
+    border-radius: 30px;
+
+}
+
+
+
+
+
+
+
+
+span{
+    position: relative;
+    top:20px;
+    color:#9D6A89;
+    display:inline-block ;
+    font-size: 5rem;
+    animation-name: bounce; 
+    animation-duration: 1s; 
+    animation-iteration-count: infinite; 
+    animation-direction: alternate;
+    text-shadow: 0 0 1px  #b7b7b7,
+                 0 0 2px  #b7b7b7,
+                 0 0 3px  #b7b7b7,
+                 0 0 4px  #b7b7b7,
+                 0 0 5px  #b7b7b7,
+                 6px 0 transparent,
+                 0 7px 0 transparent,
+                 0 8px 0 transparent,
+                 0 9px 0 transparent,
+                 0 0px 10px rgba(0,0,0.5)
+}
+
+
+
+   @keyframes bounce {
+  100% {
+    top: -20px;
+    text-shadow:
+      0 1px 0 #ccc,
+      0 2px 0 #ccc,
+      0 3px 0 #ccc,
+      0 4px 0 #ccc,
+      0 5px 0 #ccc,
+      0 6px 0 #ccc,
+      0 7px 0 #ccc,
+      0 8px 0 #ccc,
+      0 9px 0 #ccc,
+      0 60px 30px rgba(0, 0, 0, 0.3);
+  }
+} 
+    
+
+ h1 span:nth-child(1) {
+    animation-delay: 0s;
+}
+ h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+ h1 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+h1 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+h1 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+ h1 span:nth-child(6) {
+    animation-delay: 0.5s;
 }
