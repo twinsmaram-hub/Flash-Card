@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcard: <%= card.question %></title>
     <link rel="stylesheet" href="/stylesheets/style.css"> 
+    <script src="/js/flashcard.js" defer></script>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="card__scale-1"></div>
-    <div class="card__scale-2"></div>
     
     <div class="modal-overlay" id="flashcardModal">
         <div class="modal-content">
             
-            <span class="close-button" onclick="closeModal()">&times;</span>
+            <span class="close-button" >&times;</span>
             
             <div class="flashcard-container">
                 <div class="flashcard">
@@ -62,6 +61,5 @@
         </div>
     </div>
     
-   <script src="/js/flashcard.js"></script>
 </body>
 </html>

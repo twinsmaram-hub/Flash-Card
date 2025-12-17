@@ -1,27 +1,35 @@
+// 1. SELECTORS 
+const modal         = document.getElementById('flashcardModal');
+const closeBtn      = document.querySelector('.close-button');
+const flashcards    = document.querySelectorAll('.flashcard');
 
-function flashcardFlip() {
-    const flashcards = document.querySelectorAll('.flashcard');
 
-    flashcards.forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('flipped');
-        });
-    });
+// 2. FUNCTIONS 
 
-    console.log("Flashcard flip functionality is active.");
+function handleCardFlip(cardEvent) {
+    if (cardEvent.target.closest('.card-actions')) return;
+    
+    cardEvent.currentTarget.classList.toggle('flipped');
 }
 
-function closeModal() {
-    const modal = document.getElementById('flashcardModal');
+// close and send to show page
+function handleCloseModal() {
     if (modal) {
         modal.style.display = 'none';
+        window.location.href = '/cards';
     }
-
-    window.location.href = '/cards/show/';
-
-    console.log("Modal closed and redirecting to /cards...");
 }
 
-document.addEventListener('DOMContentLoaded', flashcardFlip);
+
+// 3. EVENT LISTENERS
+
+flashcards.forEach(card => {
+    card.addEventListener('click', handleCardFlip);
+});
+closeBtn.addEventListener('click', handleCloseModal);
+
+
+    
+
 
 
