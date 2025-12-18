@@ -503,9 +503,10 @@ background-image: linear-gradient(to right, #261430, #331A40);
 
 .card-front img {
     max-width: 90%;
-    max-height: 150px; 
+    max-height: 139px; 
     border-radius: 8px;
     margin-top: 5px;
+    margin-bottom: 5px;
     box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
     object-fit: contain;
     flex-grow: 0;
